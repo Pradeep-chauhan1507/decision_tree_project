@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penguin Predictor — Antarctic ML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+<!-- Dotted grid background -->
+<div class="dot-grid" aria-hidden="true"></div>
+
+<!-- Top nav -->
+<header class="top-nav">
+    <div class="brand">
+        PENGUIN (R)<br>
+        <span class="brand-sub">PREDICTOR<span class="beta">BETA</span></span>
+    </div>
+
+    <div class="nav-actions">
+        <button class="icon-pill" aria-label="Theme">◐</button>
+        <button class="icon-pill" aria-label="Info">○</button>
+        <button class="menu-pill" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main class="shell">
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">
+            Come to play with <em>Penguins.</em><br>
+            Your Antarctic <em>lab</em> awaits.
+        </h1>
+        <p class="hero-sub">
+            Classify Adelie, Chinstrap and Gentoo in real time using physical<br>
+            measurements — powered by a trained ML model.
+        </p>
+
+        <!-- Decorative cards row (like Nothing's homescreen tiles) -->
+        <div class="tiles">
+            <div class="tile tile-photo">
+                <div class="ph ph-1"></div>
+                <div class="ph ph-2"></div>
+                <div class="ph ph-3"></div>
+            </div>
+
+            <div class="tile tile-clock">
+                <div class="clock">
+                    <span class="tick t1"></span>
+                    <span class="tick t2"></span>
+                    <span class="tick t3"></span>
+                    <span class="tick t4"></span>
+                    <span class="hand hand-h"></span>
+                    <span class="hand hand-m"></span>
+                    <span class="center-dot"></span>
+                    <span class="clock-label">ML</span>
+                    <span class="red-dot"></span>
+                </div>
+            </div>
+
+            <div class="tile tile-touch">
+                <span class="touch-num">000</span>
+                <span class="touch-dot"></span>
+                <span class="touch-label">PREDICT &amp; CLASSIFY</span>
+            </div>
+        </div>
+
+        <div class="tile-plus tp1">+</div>
+        <div class="tile-plus tp2">+</div>
+        <div class="tile-plus tp3">+</div>
+        <div class="tile-plus tp4">+</div>
+    </section>
+
+    <!-- Section header -->
+    <section class="section-head">
+        <div>
+            <h2 class="section-title">Penguin Inputs <span class="beta-tag">(Live)</span></h2>
+            <p class="section-sub">Enter measurements — get an instant species prediction.</p>
+        </div>
+
+        <div class="head-actions">
+            <a href="#form" class="pill pill-yellow">
+                Run prediction <span class="arrow">↗</span>
+            </a>
+            <a href="#" class="pill pill-ghost">
+                See dataset <span class="arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Form card -->
+    <section class="card" id="form">
+        <form action="/predict" method="POST" class="form-grid">
+
+            <div class="field">
+                <label>Culmen Length <span>mm</span></label>
+                <input type="number" step="any" name="culmen_length_mm" placeholder="e.g. 39.1" required>
+            </div>
+
+            <div class="field">
+                <label>Culmen Depth <span>mm</span></label>
+                <input type="number" step="any" name="culmen_depth_mm" placeholder="e.g. 18.7" required>
+            </div>
+
+            <div class="field">
+                <label>Flipper Length <span>mm</span></label>
+                <input type="number" step="any" name="flipper_length_mm" placeholder="e.g. 181" required>
+            </div>
+
+            <div class="field">
+                <label>Body Mass <span>g</span></label>
+                <input type="number" step="any" name="body_mass_g" placeholder="e.g. 3750" required>
+            </div>
+
+            <div class="field">
+                <label>Island Dream</label>
+                <select name="island_Dream">
+                    <option value="true">True</option>
+                    <option value="false" selected>False</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Island Torgersen</label>
+                <select name="island_Torgersen">
+                    <option value="true">True</option>
+                    <option value="false" selected>False</option>
+                </select>
+            </div>
+
+            <div class="field full">
+                <label>Sex — Male</label>
+                <select name="sex_MALE">
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn full">
+                <span>Predict species</span>
+                <span class="arrow">↗</span>
+            </button>
+        </form>
+
+        <% if (prediction) { %>
+            <div class="result">
+                <div class="result-label">// PREDICTION</div>
+                <div class="result-value">
+                    <span class="result-marker"></span>
+                    <%= prediction %>
+                </div>
+            </div>
+        <% } %>
+    </section>
+
+    <footer class="foot">
+        <span>© Penguin Predictor</span>
+        <span class="foot-dot">●</span>
+        <span>Built with Antarctic ML</span>
+    </footer>
+</main>
+
+</body>
+</html>
